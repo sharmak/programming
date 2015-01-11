@@ -7,18 +7,28 @@ struct Node {
     {}
 };
 
-# Recursive function to add One to the end of linked list.
-int AddOne(Node *n) {
+// Recursive function to add One to the end of linked list.
+int AddOneUtil(Node *n) {
     if (n->next == NULL) {
         int val = n->val + 1;
         n->val = val % 10;
         return val / 10;
     } else {
-        int c = AddOne(n->next);
+        int c = AddOneUtil(n->next);
         int val = n->val + c;
         n->val = val % 10;
         return val / 10;
     }
+}
+
+Node* AddOne(Node *head) {
+    int c = AddOneUtil(head);
+    if (c == 1) {
+        Node* n100 = new Node(1, NULL);
+        n100->next = head;
+        head = n100;
+    }
+    return head;
 }
 
 int main() {
@@ -26,12 +36,7 @@ int main() {
     Node* n2 = new Node(5, NULL);
     n1->next = n2;
     Node* head = n1;
-    int c = AddOne(n1);
-    if (c == 1) {
-        Node* n100 = new Node(1, NULL);
-        n100->next = n1;
-        head = n100;
-    }
+    head = AddOne(head);
     Node *curr = head;
     while (curr != NULL) {
         std::cout << curr->val << std::endl;
@@ -39,3 +44,4 @@ int main() {
     }
     return 0;
 }
+
