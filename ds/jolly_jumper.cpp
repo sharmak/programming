@@ -30,7 +30,6 @@ typedef pair<int,int> ii;
 
 
 #include <boost/dynamic_bitset.hpp>
-boost::dynamic_bitset<> bs(64, 2);
 
 string jolly_jumper(const vector<int> & v) {
     int sizeBitSet = v.size() - 1;
