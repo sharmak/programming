@@ -1,1 +1,1 @@
-# CPP Programs written in free time
+# General (Java/C++) Programs written in free time
